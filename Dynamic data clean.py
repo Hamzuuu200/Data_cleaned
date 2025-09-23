@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.title("🧹 Universal Data Cleaning App")
 
@@ -54,3 +55,4 @@ if file:
 
     # Step 9: Download button
     st.download_button("⬇️ Download Cleaned CSV", df.to_csv(index=False), "cleaned.csv")
+
