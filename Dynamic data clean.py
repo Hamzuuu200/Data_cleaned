@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 st.title("🧹 Universal Data Cleaning App")
 
@@ -38,21 +37,8 @@ if file:
     rows = st.slider("Select number of rows to display:", 5, len(df), 10)
     st.write("✅ Cleaned Data", df.head(rows))
 
-    # Step 8: Scatter Plot
-    st.subheader("📊 Scatter Plot")
-    if len(numeric_cols) >= 2:
-        x_col = st.selectbox("Select X-axis", numeric_cols)
-        y_col = st.selectbox("Select Y-axis", numeric_cols)
-        
-        fig, ax = plt.subplots()
-        ax.scatter(df[x_col], df[y_col], alpha=0.7)
-        ax.set_xlabel(x_col)
-        ax.set_ylabel(y_col)
-        ax.set_title(f"{y_col} vs {x_col}")
-        st.pyplot(fig)
-    else:
-        st.info("Not enough numeric columns for scatter plot.")
-
+    
     # Step 9: Download button
     st.download_button("⬇️ Download Cleaned CSV", df.to_csv(index=False), "cleaned.csv")
+
 
